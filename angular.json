@@ -20,6 +20,7 @@
             "outputPath": "dist/bi-project",
             "index": "src/index.html",
             "main": "src/main.ts",
+            "preserveSymlinks": true,
             "polyfills": [
               "zone.js"
             ],
@@ -30,9 +31,16 @@
               "src/assets"
             ],
             "styles": [
+              {
+                "input": "node_modules/@progress/kendo-theme-default/dist/all.css"
+              },
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/jquery/dist/jquery.min.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -100,5 +108,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "95945b31-b91b-49ad-bd0d-7b092325f399"
   }
 }
