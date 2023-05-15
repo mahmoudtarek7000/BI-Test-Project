@@ -10,4 +10,5 @@ export abstract class IDatasService extends BehaviorSubject<any[]> {
     abstract read(filter: string): void;
     abstract fetch(filter: string): Observable<any>;
     loading: boolean = true;
+    APIURL!: string;
 }

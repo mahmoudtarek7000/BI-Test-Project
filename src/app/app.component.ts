@@ -1,10 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { BIGridComponent } from 'bi-modules';
-import { IColumns } from 'bi-modules/interfaces/IColumns.interface';
+import { IColumns } from './interfaces/IColumns.interface';
 import { DataTypes } from './enums/DataType';
 import { IDatasService } from './interfaces/IDataService';
-import { IGrid } from 'bi-modules/interfaces/IGird.interface';
+import { IGrid } from 'bi-modules/lib/interfaces/IGird.interface';
 
 @Component({
   selector: 'app-root',
@@ -21,10 +20,10 @@ export class AppComponent {
 		{ DisplayName: "rowguid", Name: "rowguid", DataType: DataTypes.Text, Validators: null, IsEditable: true, IsFilterable: true, DefaultValue: null, controlType: "", viewCellStyle: "", IsVisible: false }
 	]
 	dataItem: any;
-	@ViewChild(BIGridComponent) BIGrid!: IGrid;
+	@ViewChild('Header') BIGrid!: IGrid;
 	constructor(public dataService: IDatasService ) {
-		
-		
+    this.dataService.APIURL="https://bifmcg.bi-technologies.net/SalesBuzzOData/HH_AR_CustomerCategories";
+
 	}
 
 }
