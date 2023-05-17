@@ -6,8 +6,6 @@ import { AppComponent } from './app.component';
 import { AlertModule } from '@full-fledged/alerts';
 import { IconsModule } from '@progress/kendo-angular-icons';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { IDatasService } from './interfaces/IDataService';
-import { DatasService } from './service/data.service';
 import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
 import { GridModule } from '@progress/kendo-angular-grid';
 import { HttpClientModule } from '@angular/common/http';
@@ -15,6 +13,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { PagerModule } from '@progress/kendo-angular-pager';
 import { FilterModule } from '@progress/kendo-angular-filter';
 import { BIModulesModule } from 'bi-modules';
+
+
 
 
 
@@ -36,12 +36,11 @@ import { BIModulesModule } from 'bi-modules';
     ReactiveFormsModule,
     PagerModule,
     FilterModule,
+    BIModulesModule,
+    BIModulesModule,
   ],
   providers: [
-    {
-			provide: IDatasService,
-			useClass: DatasService
-		}
+
   ],
   bootstrap: [AppComponent]
 })

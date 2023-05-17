@@ -2370,10 +2370,22 @@ batch@0.6.1:
   resolved "https://registry.npmjs.org/batch/-/batch-0.6.1.tgz"
   integrity sha512-x+VAiMRL6UPkx+kudNvxTl6hB2XNNCG2r+7wixVfIYwu/2HKRXimwQyaumLjMveWvT2Hkd/cAJw+QBMfJ/EKVw==
 
+"bi-interfaces@file:../BI-Interfaces/dist/bi-interfaces":
+  version "0.0.0-watch+1684324456283"
+  resolved "file:../BI-Interfaces/dist/bi-interfaces"
+  dependencies:
+    tslib "^2.3.0"
+
 "bi-modules@file:../BI-Prime/dist/bi-modules":
-  version "0.0.0-watch+1684147981066"
+  version "0.0.0-watch+1684328488961"
   resolved "file:../BI-Prime/dist/bi-modules"
   dependencies:
+    "@full-fledged/alerts" "^15.0.0"
+    "@progress/kendo-angular-buttons" "^12.0.1"
+    "@progress/kendo-angular-icons" "^12.0.1"
+    bootstrap "^5.2.3"
+    primeicons "^6.0.1"
+    primeng "15.0.0"
     tslib "^2.3.0"
 
 big.js@^5.2.2:
