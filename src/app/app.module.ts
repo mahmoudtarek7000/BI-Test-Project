@@ -14,6 +14,7 @@ import { PagerModule } from '@progress/kendo-angular-pager';
 import { FilterModule } from '@progress/kendo-angular-filter';
 import { BIModulesModule } from 'bi-modules';
 import { LayoutModule } from '@progress/kendo-angular-layout';
+import {MatTabsModule} from "@angular/material/tabs";
 
 
 
@@ -26,7 +27,7 @@ import { LayoutModule } from '@progress/kendo-angular-layout';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AlertModule.forRoot({ maxMessages: 5, timeout: 5000, positionY: "top" }),
+    AlertModule.forRoot({maxMessages: 5, timeout: 5000, positionY: "top"}),
     IconsModule,
     BrowserAnimationsModule,
     DateInputsModule,
@@ -37,7 +38,8 @@ import { LayoutModule } from '@progress/kendo-angular-layout';
     PagerModule,
     FilterModule,
     BIModulesModule,
-    LayoutModule
+    LayoutModule,
+    MatTabsModule
   ],
   providers: [
 
