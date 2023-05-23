@@ -13,6 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { PagerModule } from '@progress/kendo-angular-pager';
 import { FilterModule } from '@progress/kendo-angular-filter';
 import { BIModulesModule } from 'bi-modules';
+import { LayoutModule } from '@progress/kendo-angular-layout';
 
 
 
@@ -36,6 +37,7 @@ import { BIModulesModule } from 'bi-modules';
     PagerModule,
     FilterModule,
     BIModulesModule,
+    LayoutModule
   ],
   providers: [
 
