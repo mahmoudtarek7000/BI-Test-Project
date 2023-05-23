@@ -1,8 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {IDataService} from "bi-interfaces/lib/interfaces/IDataService";
-import {BIObservable} from "bi-interfaces/lib/interfaces/observable";
-import {BehaviorSubject, map, Observable} from "rxjs";
+import { IDataService } from "bi-interfaces/lib/interfaces/IDataService";
+import { BehaviorSubject, map, Observable } from "rxjs";
 @Injectable({
     providedIn: 'root'
 })
@@ -10,7 +9,7 @@ export class DataService extends BehaviorSubject<any> implements IDataService {
     public data: any[] = [];
     loading = true;
     APIURL!: string;
-    Token:string= 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoicm9vdCIsImp0aSI6ImE0ZGQyZDMwLTdhN2EtNDc5NC1hYmM1LWM2ODhhYzY5MDNkMiIsIkJVSUQiOiIxIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQWRtaW5pc3RyYXRvciIsImV4cCI6MTY4NDMzMzcyMiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo1OTkyMSIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NDIwMCJ9.W8IQyRabW79deV46750xjZGzNE1gKN6sbbbUaphgo0I'
+    Token: string = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoicm9vdCIsImp0aSI6IjU0NWM3NGY2LWMwMjQtNGNhYy04OTQxLTEwZDBmMjRlZjhiYiIsIkJVSUQiOiIxIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQWRtaW5pc3RyYXRvciIsImV4cCI6MTY4NDg0NDUzNSwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo1OTkyMSIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NDIwMCJ9.sGTiev5nc_cqY8lE-zI5y3kRUYn7sDO4XTbdExhkBKI'
 
     constructor(private http: HttpClient) {
         super([])
@@ -24,7 +23,7 @@ export class DataService extends BehaviorSubject<any> implements IDataService {
         });
     }
 
-    public fetch(filter: string): any{
+    public fetch(filter: string): any {
         const httpOptions = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
@@ -33,7 +32,10 @@ export class DataService extends BehaviorSubject<any> implements IDataService {
         };
         return this.http
             .get(`${this.APIURL}?${filter}`, httpOptions)
-            .pipe(map((data: any) => ({data: data.value, total: data['@odata.count'] ? data['@odata.count']: data.value.length})));
+            .pipe(
+                map((data: any) => ({ data: data.value, total: data['@odata.count'] ? data['@odata.count'] : data.value.length })),
+                map(res => ({ data: res['data'].map((response: any) => ({ ...response, Date: new Date(response.Date) })), total: res.total }))
+            );
     }
 
     delete(id: string): any {

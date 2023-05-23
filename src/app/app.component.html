@@ -1,3 +1,13 @@
 <BI-Nav [BIGrid]="Header"></BI-Nav>
-<BI-Grid #Header [Key]="'CategoryId'" [DataService]="dataService" [Columns]="columns"></BI-Grid>
+
+<lib-bi-tab-strip>
+    <lib-bi-tab-strip-tab [title]="'Overview'" [select]="true">
+        <lib-bi-grid-layout [rows]="[90]" [cols]="['100%']" [gap]="5">
+            <lib-bi-grid-layout-item [col]="1" [row]="1">
+                <BI-Grid #Header [Key]="'CategoryId'" [DataService]="dataService" [Columns]="columns"></BI-Grid>
+            </lib-bi-grid-layout-item>
+        </lib-bi-grid-layout>
+    </lib-bi-tab-strip-tab>
+</lib-bi-tab-strip>
+
 <ff-alerts></ff-alerts>

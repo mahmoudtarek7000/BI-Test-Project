@@ -25,8 +25,7 @@ import { BIModulesModule } from 'bi-modules';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BIModulesModule,
-    AlertModule.forRoot({maxMessages: 5, timeout: 5000, positionY: "top"}),
+    AlertModule.forRoot({ maxMessages: 5, timeout: 5000, positionY: "top" }),
     IconsModule,
     BrowserAnimationsModule,
     DateInputsModule,
@@ -36,7 +35,6 @@ import { BIModulesModule } from 'bi-modules';
     ReactiveFormsModule,
     PagerModule,
     FilterModule,
-    BIModulesModule,
     BIModulesModule,
   ],
   providers: [
