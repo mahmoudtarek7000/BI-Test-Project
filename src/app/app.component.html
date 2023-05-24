@@ -1,11 +1,55 @@
-<BI-Nav [BIGrid]="Header"></BI-Nav>
-<mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
-  <mat-tab label="Overview">
-<lib-bi-grid-layout [rows]="[90]" [cols]="['100%']" [gap]="5">
-    <lib-bi-grid-layout-item [col]="1" [row]="1">
-        <BI-Grid #Header [Key]="'CategoryId'" [DataService]="dataService" [Columns]="columns"></BI-Grid>
-    </lib-bi-grid-layout-item>
-</lib-bi-grid-layout>
-  </mat-tab>
-</mat-tab-group>
+<div class="container">
+    <BI-Nav [BIGrid]="Header"></BI-Nav>
+    <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+        <mat-tab label="Overview">
+            <BI-grid-layout [rows]="[90]" [cols]="['100%']" [gap]="5">
+                <BI-grid-layout-item [col]="1" [row]="1">
+                    <BI-Grid #Header [Key]="'CategoryId'" [DataService]="dataService" [Columns]="columns"></BI-Grid>
+                </BI-grid-layout-item>
+            </BI-grid-layout>
+        </mat-tab>
+        <mat-tab label="General">
+            <form *ngIf="BIGrid && BIGrid.CurrentSelectRow" [formGroup]="BIGrid.CurrentSelectRow">
+                <BI-grid-layout [rows]="['auto']" [cols]="['30%', '30%', '30%']" [gap]="10">
+                    <BI-grid-layout-item [col]="1" [row]="1">
+                        <label for="">Category Number</label>
+                        <input formControlName="CategoryId" type="text" class="form-control">
+                    </BI-grid-layout-item>
+                    <BI-grid-layout-item [col]="1" [row]="1">
+                        <label for="">Name</label>
+                        <input formControlName="Description" type="text" class="form-control">
+                    </BI-grid-layout-item>
+                    <BI-grid-layout-item [col]="1" [row]="1">
+                        <label for="">Secondry Name</label>
+                        <input formControlName="ArabicDescription" type="text" class="form-control">
+                    </BI-grid-layout-item>
+                    <BI-grid-layout-item [col]="1" [row]="1">
+                        <label for="">Sales type Id</label>
+                        <input formControlName="SalesTypeID" type="text" class="form-control">
+                    </BI-grid-layout-item>
+                    <BI-grid-layout-item [col]="1" [row]="1">
+                        <label for="">Payment Term Branch</label>
+                        <input formControlName="DefaultTermsBranch" type="text" class="form-control">
+                    </BI-grid-layout-item>
+                    <BI-grid-layout-item [col]="1" [row]="1">
+                        <label for="">Payment Term Id</label>
+                        <input formControlName="DefaultPaymentTerms" type="text" class="form-control">
+                    </BI-grid-layout-item>
+                    <BI-grid-layout-item [col]="1" [row]="1">
+                        <label for="">Price id</label>
+                        <input formControlName="DefaultPriceListID" type="text" class="form-control">
+                    </BI-grid-layout-item>
+                    <BI-grid-layout-item [col]="1" [row]="1">
+                        <label for="">Credit Limit</label>
+                        <input formControlName="DefaultCreditLimit" type="text" class="form-control">
+                    </BI-grid-layout-item>
+                    <BI-grid-layout-item [col]="1" [row]="1">
+                        <label for="">Edit Price Minimum PCT</label>
+                        <input formControlName="EditPriceMinPCT" type="text" class="form-control">
+                    </BI-grid-layout-item>
+                </BI-grid-layout>
+            </form>
+        </mat-tab>
+    </mat-tab-group>
+</div>
 <ff-alerts></ff-alerts>
