@@ -4,7 +4,7 @@
         <mat-tab label="Overview">
             <BI-grid-layout [rows]="[90]" [cols]="['100%']" [gap]="5">
                 <BI-grid-layout-item [col]="1" [row]="1">
-                    <BI-Grid #Header  [Key]="'CategoryId'" [DataService]="dataService" [Columns]="columns"></BI-Grid>
+                    <BI-Grid #Header [Key]="'CategoryId'" [DataService]="dataService" [Columns]="columns"></BI-Grid>
                 </BI-grid-layout-item>
             </BI-grid-layout>
         </mat-tab>

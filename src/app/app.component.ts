@@ -1,16 +1,19 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { IColumns } from 'bi-interfaces/lib/interfaces/IColumns.interface';
 import { DataTypes } from './enums/DataType';
 import { DataService } from "./service/data.service";
 import { IGrid } from 'bi-interfaces/lib/interfaces/IGrid';
+import Swal from 'sweetalert2';
+import { of } from 'rxjs';
+import { Subject } from 'bi-interfaces';
 
 @Component({
 	selector: 'app-root',
 	templateUrl: './app.component.html',
 	styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
 	title = 'BI-Project';
 	@ViewChild('Header') BIGrid!: IGrid;
 	columns: IColumns[] = [
@@ -30,6 +33,21 @@ export class AppComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
+	}
+
+	ngAfterViewInit(): void {
+		this.BIGrid.StopSave.next(false);
+		this.BIGrid.BeforeAction = () => {
+			Swal.fire({
+				title: 'Do you want to save the changes?',
+				showDenyButton: true,
+				confirmButtonText: 'Save',
+				denyButtonText: `Don't save`,
+			}).then(res => {
+				if (res['value']) this.BIGrid.StopSave.next(true);
+				else this.BIGrid.StopSave.next(false);
+			})
+		}
 	}
 
 }

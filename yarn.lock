@@ -3152,13 +3152,13 @@
 
 "bi-interfaces@file:../BI-Interfaces/dist/bi-interfaces":
   "resolved" "file:../BI-Interfaces/dist/bi-interfaces"
-  "version" "0.0.0-watch+1684926699926"
+  "version" "0.0.0-watch+1685022187651"
   dependencies:
     "tslib" "^2.3.0"
 
 "bi-modules@file:../BI-Libs/dist/bi-modules":
   "resolved" "file:../BI-Libs/dist/bi-modules"
-  "version" "0.0.0-watch+1684931093399"
+  "version" "0.0.0-watch+1685022239686"
   dependencies:
     "tslib" "^2.3.0"
 
@@ -7045,6 +7045,11 @@
   "integrity" "sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w=="
   "resolved" "https://registry.npmjs.org/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz"
   "version" "1.0.0"
+
+"sweetalert2@^11.7.5":
+  "integrity" "sha512-RBPKdK8Uf9/bz9r4vy7x6sGqf0MioSXt1po1lAwwcl3AwbjHVTc5S0yud4ZJKU1EhvJFVDrFoqIpHwWERwZJEA=="
+  "resolved" "https://registry.npmjs.org/sweetalert2/-/sweetalert2-11.7.5.tgz"
+  "version" "11.7.5"
 
 "symbol-observable@4.0.0":
   "integrity" "sha512-b19dMThMV4HVFynSAM1++gBHAbk2Tc/osgLIBZMKsyqh34jb2e8Os7T6ZW/Bt3pJFdBTd2JwAnAAEQV7rSNvcQ=="
