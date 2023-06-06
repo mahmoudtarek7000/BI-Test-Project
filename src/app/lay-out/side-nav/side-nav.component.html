@@ -1,4 +1,4 @@
-  <div class="custom-toolbar text-nowrap ml-1 d-flex">
+  <div [style.max-width]="collapsed ? '50px': null" class="custom-toolbar text-nowrap ml-1 d-flex">
     <div [style.background-color]="collapsed ? '#3688FC': null"  class="pb-0">
       <kendo-button
         fillMode="none"
@@ -8,11 +8,11 @@
         (click)="drawer.toggle(); changeBackGround()"
       ></kendo-button>
     </div>
-    <div class="m-2 pb-1">
+    <div *ngIf="!collapsed" class="m-2 pb-1">
       <img src="assets/images/salesbuzz-dark-logo.svg" alt="">
     </div>
     </div>
-    <kendo-drawer-container style="height: 100%;">
+    <kendo-drawer-container style="height: 100%">
       <kendo-drawer
         #drawer
         [items]="items"
@@ -31,7 +31,7 @@
     </ng-template>
       </kendo-drawer>
 
-      <kendo-drawer-content>
+      <kendo-drawer-content class="side-content">
         <app-nav-content (backToNav)="drawer.toggle(); changeBackGround()" [collapsed]="collapsed" [items]="items" [selectedItem]="selected"></app-nav-content>
       </kendo-drawer-content>
     </kendo-drawer-container>

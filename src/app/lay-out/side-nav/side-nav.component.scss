@@ -7,7 +7,9 @@
 }
 kendo-drawer-container {
     flex: 1 1 auto;
-   
+    .drawer{
+      background-color: #F9FAFC;
+    }
     .k-drawer-item:hover, .k-selected{
       background-color: #3688FC !important;
       color:#ffff;
@@ -32,9 +34,10 @@ kendo-drawer-container {
       }
     }
     }
+.side-content:not(:empty){
+  box-shadow: 0px 3px 6px #00000029;
+  margin-top: -38px;
   }
-  .k-icon {
-    font-size: 20px;
-  }
+}
 
   
