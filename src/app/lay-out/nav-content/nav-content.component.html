@@ -1,55 +1,26 @@
-<div id="Inbox" *ngIf="selectedItem === 'Home'">
-    <ul class="inboxList">
-      <li>
-        <h6>Monday meeting</h6>
-        <p>
-          Hi Tom, Since Monday I'll be out of office, I'm rescheduling the
-          meeting for Tuesday.
-        </p>
-      </li>
-      <li>
-        <h6>I'm sorry, Tom</h6>
-        <p>
-          Hi Tom, my aunt comes for a visit this Saturday, so I can't come
-          back to St. Pete...
-        </p>
-      </li>
-    </ul>       
+  <div *ngFor="let item of items">
+  <div *ngIf="(selectedItem === item.text) && item.children">
+  <div class="d-flex">
+    <kendo-button (click)="returnToNav()" class="p-0 mt-1" fillMode="clear" imageUrl="assets/icons/back.svg"></kendo-button><p class="text-nowrap text-center m-3">{{item.text}}</p>
   </div>
-  <div id="Notifications" *ngIf="selectedItem === 'Recent'">
-    <ul>
-      <li>Monday meeting</li>
-      <li>Regarding org chart changes</li>
-      <li>Meeting with Cliff</li>
-      <li>Global Marketing Meeting</li>
-      <li>Out tonight with collegues?</li>
-    </ul>
+<div *ngIf="item.children">
+  <div *ngFor="let child of item.children; index as i">
+  <div *ngIf="child.children" class="wrapper bg-light">
+    <kendo-expansionpanel
+      *ngFor="let child of item.children; index as i"
+      [title]="child.text"
+      class="bg-light"
+    >
+      <div *ngIf="child.children" class="content bg-light">
+        <div *ngFor="let grandChild of child.children; index as i" class="d-grid gap-2 w-100">
+          <button [routerLink]="grandChild.path" class="btn btn-light text-nowrap my-2 text-start" type="button">{{grandChild.text}}</button>
+        </div>
+      </div>
+    </kendo-expansionpanel>
   </div>
-  <div id="Calendar" *ngIf="selectedItem === 'Favourite'">
-    <ul>
-      <li>
-        <h6>11/5 Monday</h6>
-        <p>Martha Birthday</p>
-      </li>
-      <li>
-        <h6>15/6 Sunday</h6>
-        <p>Job interview for internal position</p>
-      </li>
-    </ul>
+  <div class="d-grid gap-2 w-100" *ngIf="!child.children">
+    <button [routerLink]="child.path" class="btn btn-light text-nowrap my-2 text-start" type="button">{{child.text}}</button>
+</div>
+</div>
   </div>
-  <div id="Attachments" *ngIf="selectedItem === 'Attachments'">
-    <ul>
-      <li>Build enterprise apps</li>
-      <li>Fw: Regarding Multiline textbox</li>
-      <li>Away next week</li>
-      <li>Fw: Your Costume is ready</li>
-      <li>Update completed</li>
-    </ul>
-  </div>
-  <div id="Favourites" *ngIf="selectedItem === 'Favourites'">
-    <ul>
-      <li>70% Discount!</li>
-      <li>90% Discount!</li>
-      <li>One time offer!</li>
-    </ul>
-  </div>
+</div>

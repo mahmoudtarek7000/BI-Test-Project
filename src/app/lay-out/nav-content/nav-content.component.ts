@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output, QueryList } from '@angular/core';
+import { ExpansionPanelComponent } from '@progress/kendo-angular-layout';
 
 @Component({
   selector: 'app-nav-content',
@@ -7,4 +8,13 @@ import { Component, Input } from '@angular/core';
 })
 export class NavContentComponent {
   @Input() selectedItem!: string;
+  @Input() items: any;
+  @Input() collapsed!: boolean;
+  @Output() backToNav = new EventEmitter<any>();
+
+  returnToNav(): void{
+this.selectedItem = "";
+this.collapsed = false;
+this.backToNav.emit();
+  }
 }
