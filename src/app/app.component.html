@@ -1,15 +1,16 @@
 <div class="container">
+    <Bi-Sidebar [items]="items"></Bi-Sidebar>
     <BI-Nav [BIGrid]="Header"></BI-Nav>
     <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
         <mat-tab label="Overview">
             <BI-grid-layout [rows]="[90]" [cols]="['100%']" [gap]="5">
                 <BI-grid-layout-item [col]="1" [row]="1">
-                    <BI-Grid #Header [Key]="'CategoryId'" [DataService]="dataService" [Columns]="columns"></BI-Grid>
+                    <BI-Grid #Header [DataService]="dataService" [Columns]="columns"></BI-Grid>
                 </BI-grid-layout-item>
             </BI-grid-layout>
         </mat-tab>
         <mat-tab label="General">
-            <form [formGroup]="Header.CurrentSelectRow">
+           <form [formGroup]="Header.CurrentSelectRow"> 
                 <BI-grid-layout [rows]="['auto']" [cols]="['30%', '30%', '30%']" [gap]="10">
                     <BI-grid-layout-item [col]="1" [row]="1">
                         <label for="">Category Number</label>

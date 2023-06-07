@@ -1,70 +1,66 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IDataService } from "bi-interfaces/lib/interfaces/IDataService";
+import { IDataSource } from "bi-interfaces/lib/interfaces/IDataSource";
 import { BehaviorSubject, map, Observable } from "rxjs";
+import { Validators } from '@angular/forms';
+import { HttpService } from './http.service';
+import { DataTypes } from '../enums/DataType';
+import { DataSourceType } from 'bi-interfaces/lib/enums/DataSourceType';
 @Injectable({
     providedIn: 'root'
 })
-export class DataService extends BehaviorSubject<any> implements IDataService {
+export class DataService extends BehaviorSubject<any> implements IDataSource {
     public data: any[] = [];
-    loading = true;
+    Params!: string;
+    Key!: string;
+    loading: boolean = true;
     APIURL!: string;
-    Token: string = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoicm9vdCIsImp0aSI6ImI4ZjEyODkxLTI5OGMtNDM3Yi04YzkwLTY4MTczMmM2OGRjZSIsIkJVSUQiOiIxIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQWRtaW5pc3RyYXRvciIsImV4cCI6MTY4NTAzNDEzOSwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo1OTkyMSIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NDIwMCJ9.b78xCYKCBZ4n_hYN6h7IIAy3LB6cOSfzbtcD4cUPdm8'
+    Type!: DataSourceType;
+    IsClientSideFilter!: boolean;
+    Columns = [
+        { Name: "AllowPriceEdit", DataType: DataTypes.Text },
+        { Name: "ArabicDescription", DataType: DataTypes.Text },
+        { Name: "CategoryId", DataType: DataTypes.Text },
+        { Name: "CreatedOn", DataType: DataTypes.Text },
+        { Name: "Createdby", DataType: DataTypes.Text },
+        { Name: "DefaultCreditLimit", DataType: DataTypes.Text },
+        { Name: "DefaultPaymentTerms", DataType: DataTypes.Text },
+        { Name: "DefaultPriceListID", DataType: DataTypes.Text },
+        { Name: "DefaultTempCreditLimit", DataType: DataTypes.Text },
+        { Name: "DefaultTermsBranch", DataType: DataTypes.Text },
+        { Name: "Description", DataType: DataTypes.Text },
+        { Name: "EditPriceMinPCT", DataType: DataTypes.Text },
+        { Name: "ModifiedBy", DataType: DataTypes.Text },
+        { Name: "ModifiedOn", DataType: DataTypes.Text },
+        { Name: "RecID", DataType: DataTypes.Text },
+        { Name: "RecordSource", DataType: DataTypes.Text },
+        { Name: "SalesTypeID", DataType: DataTypes.Text },
+        { Name: "buid", DataType: DataTypes.Text },
+        { Name: "rowguid", DataType: DataTypes.Text }
+    ]
 
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpService) {
         super([])
     }
 
     public read(filter: string): void {
-        this.fetch(filter).subscribe((data: any[]) => {
+        this.http.fetch(this.APIURL, filter).subscribe((data: any[]) => {
             this.data = data;
             super.next(data);
             this.loading = false;
         });
     }
 
-    public fetch(filter: string): any {
-        const httpOptions = {
-            headers: new HttpHeaders({
-                'Content-Type': 'application/json',
-                "Authorization": this.Token
-            })
-        };
-        return this.http
-            .get(`${this.APIURL}?${filter}`, httpOptions)
-            .pipe(
-                map((data: any) => ({ data: data.value, total: data['@odata.count'] ? data['@odata.count'] : data.value.length })),
-                map(res => ({ data: res['data'].map((response: any) => ({ ...response, Date: new Date(response.Date) })), total: res.total }))
-            );
-    }
 
     delete(id: string): any {
-        const httpOptions = {
-            headers: new HttpHeaders({
-                'Content-Type': 'application/json',
-                "Authorization": this.Token
-            })
-        };
-        return this.http.delete<any>(`${this.APIURL}/${id}`, httpOptions)
+        return this.http.delete(`${this.APIURL}/${id}`)
     }
 
     add(data: any): any {
-        const httpOptions = {
-            headers: new HttpHeaders({
-                'Content-Type': 'application/json',
-                "Authorization": this.Token
-            })
-        };
-        return this.http.post<any>(`${this.APIURL}`, data, httpOptions)
+        return this.http.add(`${this.APIURL}`, data)
     }
 
     edit(data: any, id: string): any {
-        const httpOptions = {
-            headers: new HttpHeaders({
-                'Content-Type': 'application/json',
-                "Authorization": this.Token
-            })
-        };
-        return this.http.put<any>(`${this.APIURL}/${id}`, data, httpOptions)
+        return this.http.edit(`${this.APIURL}/${id}`, data)
     }
 }

@@ -3152,13 +3152,13 @@
 
 "bi-interfaces@file:../BI-Interfaces/dist/bi-interfaces":
   "resolved" "file:../BI-Interfaces/dist/bi-interfaces"
-  "version" "0.0.0-watch+1685022187651"
+  "version" "0.0.0-watch+1686126078524"
   dependencies:
     "tslib" "^2.3.0"
 
 "bi-modules@file:../BI-Libs/dist/bi-modules":
   "resolved" "file:../BI-Libs/dist/bi-modules"
-  "version" "0.0.0-watch+1685022239686"
+  "version" "0.0.0-watch+1686130636700"
   dependencies:
     "tslib" "^2.3.0"
 

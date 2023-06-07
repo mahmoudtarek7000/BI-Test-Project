@@ -3,12 +3,12 @@
   "compileOnSave": false,
   "compilerOptions": {
     "paths": {
-      "@angular/*": [
-        "./node_modules/@angular/*"
-      ],
-      "BI-Moduels": [
-        "dist/bi-moduels"
-      ]
+      // "@angular/*": [
+      //   "./node_modules/@angular/*"
+      // ],
+      // "BI-Moduels": [
+      //   "dist/bi-moduels"
+      // ]
     },
     "baseUrl": "./",
     "skipLibCheck": true,
