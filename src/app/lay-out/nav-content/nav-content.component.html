@@ -13,13 +13,13 @@
     >
       <div *ngIf="child.children" class="content bg-light">
         <div *ngFor="let grandChild of child.children; index as i" class="d-grid gap-2 w-100">
-          <button [routerLink]="grandChild.path" class="btn btn-light text-nowrap my-2 text-start" type="button">{{grandChild.text}}</button>
+          <button [routerLink]="grandChild.path" class="btn sideBar-btn text-nowrap my-2 text-start" type="button">{{grandChild.text}}</button>
         </div>
       </div>
     </kendo-expansionpanel>
   </div>
   <div class="d-grid gap-2 w-100" *ngIf="!child.children">
-    <button [routerLink]="child.path" class="btn btn-light text-nowrap my-2 text-start" type="button">{{child.text}}</button>
+    <button [routerLink]="child.path" class="btn sideBar-btn text-nowrap my-2 text-start" type="button">{{child.text}}</button>
 </div>
 </div>
   </div>
