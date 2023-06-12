@@ -220,12 +220,12 @@ export class AppComponent implements OnInit, AfterViewInit {
 			{ Name: "buid", DataType: DataTypes.Text },
 			{ Name: "rowguid", DataType: DataTypes.Text }
 		]
-		this.config2.APIURL = "https://bifmcg.bi-technologies.net/SalesBuzzOData/HH_CustomerSalesTypes"
-		this.config2.Key = "SalesTypeID"
+		this.config2.APIURL = "https://bifmcg.bi-technologies.net/SalesBuzzOData/HH_ReturnReasons"
+		this.config2.Key = "ID"
 		this.config2.Columns = [
-			{ Name: "SalesTypeID", DataType: DataTypes.Text },
-			{ Name: "DescriptionAR", DataType: DataTypes.Text },
-			{ Name: "CategoryId", DataType: DataTypes.Text }
+			{ Name: "ID", DataType: DataTypes.Text },
+			{ Name: "L1Description", DataType: DataTypes.Text },
+			{ Name: "L2Description", DataType: DataTypes.Text }
 		]
 	}
 

@@ -9,7 +9,7 @@ import { Validators } from '@angular/forms';
 export class HttpService extends BehaviorSubject<any> implements IDataService {
     public data: any[] = [];
     loading = true;
-    Token: string = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoicm9vdCIsImp0aSI6ImQyNWQ3MDBkLWY1MGYtNGYwYi05NWNhLTI2MzI0ZDgyN2ZmYSIsIkJVSUQiOiIxIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQWRtaW5pc3RyYXRvciIsImV4cCI6MTY4NjU2NzAxNywiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo1OTkyMSIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NDIwMCJ9.fnXpKU9c_QJan4cqfGUDUzTtPpRIzYk4QJStcpAKzKs'
+    Token: string = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoicm9vdCIsImp0aSI6IjM5YjMxMzMyLWQzZDYtNDBjZi05ZGZhLTUyM2JiYTZmMzMyYiIsIkJVSUQiOiIxIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQWRtaW5pc3RyYXRvciIsImV4cCI6MTY4NjU3ODIzOCwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo1OTkyMSIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NDIwMCJ9.CE0OWO3sr5y8chv9pThVv2uCe6tnqRYmIuPT64V7O44'
     
     constructor(private http: HttpClient) {
         super([])
