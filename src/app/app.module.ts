@@ -15,6 +15,10 @@ import { FilterModule } from '@progress/kendo-angular-filter';
 import { BIModulesModule } from 'bi-modules';
 import { LayoutModule } from '@progress/kendo-angular-layout';
 import { MatTabsModule } from "@angular/material/tabs";
+import { SideNavComponent } from './lay-out/side-nav/side-nav.component';
+import { ButtonModule } from '@progress/kendo-angular-buttons';
+import { NavContentComponent } from './lay-out/nav-content/nav-content.component';
+import { DataService } from './service/data.service';
 
 
 
@@ -22,7 +26,9 @@ import { MatTabsModule } from "@angular/material/tabs";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SideNavComponent,
+    NavContentComponent
   ],
   imports: [
     BrowserModule,
@@ -39,10 +45,16 @@ import { MatTabsModule } from "@angular/material/tabs";
     FilterModule,
     BIModulesModule,
     LayoutModule,
-    MatTabsModule
+    MatTabsModule,
+    ButtonModule
   ],
   providers: [
-
+    {
+      provide: 'dataService', 
+      useFactory: () => 
+        () => new DataService(), 
+      deps: []
+    }
   ],
   bootstrap: [AppComponent]
 })
